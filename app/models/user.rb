@@ -14,6 +14,10 @@ class User < ActiveRecord::Base
 
   has_many :ownerships , foreign_key: "user_id", dependent: :destroy
   has_many :items ,through: :ownerships
+  has_many :wants, class_name: "Want", foreign_key: "user_id", dependent: :destroy
+  has_many :want_items, through: :wants, source: :item
+  has_many :haves, class_name: "Have", foreign_key: "user_id", dependent: :destroy
+  has_many :have_items, through: :haves, source: :item  # source: :itemとしているのは、through: :havesで指定した参照先のクラスHaveに宣言されているbelongs_to :itemのitemを取得することを意味しています。
 
 
   # 他のユーザーをフォローする
@@ -31,20 +35,30 @@ class User < ActiveRecord::Base
 
   ## TODO 実装
   def have(item)
+    haves.find_or_create_by(item_id: item.id)
   end
 
   def unhave(item)
+    if ownership = haves.find_by(item_id: item.id)
+      ownership.destroy
+    end
   end
 
   def have?(item)
+    have_items.include?(item)
   end
 
   def want(item)
+    wants.find_or_create_by(item_id: item.id)
   end
 
   def unwant(item)
+    if ownership = wants.find_by(item_id: item.id)
+      ownership.destroy
+    end
   end
 
   def want?(item)
+    want_items.include?(item)
   end
 end
