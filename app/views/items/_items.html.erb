@@ -1,17 +1,21 @@
 <div class="container">
   <div class="container-inner inner-default clearfix">
-    <% items.each do |item| %>
+    <% @items.each do |item| %>
       <div class="item-box">
         <div class="image">
           <div class="img-wrap">
-            <% #TODO 商品画像 %>
-            <%= image_tag("no-image.png" , alt: item['itemName']) %>
+            <% # 商品画像 %>
+            <% if imageUrl = item['mediumImageUrls'].first['imageUrl'] %>
+              <%= image_tag(mediumImage_to_largeImage(imageUrl) , alt: item['itemName']) %>
+            <% else %>
+              <%= image_tag("no-image.png" , alt: item['itemName']) %>
+            <% end %>
           </div>
         </div>
         <div class="detail">
           <p class="title">
-            <% #TODO 商品タイトル %>
-            仮タイトル
+            <% # 商品タイトル %>
+            <%= item['itemName'] %>
           </p>
         </div>
         <div class="action clearfix">
