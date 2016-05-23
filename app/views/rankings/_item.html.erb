@@ -23,9 +23,9 @@
                 <div class="img-wrap">
                     <%= link_to item do %>
                         <% if item.large_image.present? %>
-                          <%= image_tag(item.large_image , alt: item.title) %>
+                          <%= image_tag(item.large_image , alt: item.title, width: "80px", height: "80px") %>
                         <% else %>
-                          <%= image_tag("no-image.png" , alt: item.title) %>
+                          <%= image_tag("no-image.png" , alt: item.title, width: "80px", height: "80px") %>
                         <% end %>
                     <% end %>
                 </div>
