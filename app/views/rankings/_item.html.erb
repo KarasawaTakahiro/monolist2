@@ -1,0 +1,52 @@
+<%# item: 商品 %>
+<%# rank: ランキング順位 %>
+<div class="ranking-item">
+    <div class="row">
+        <div class="col-md-offset-1 col-md-3">
+            <div class="info">
+                <div class="rank-wrapper">
+                    <div class="rank">
+                        <%= rank %>．
+                    </div>
+                </div>
+                <div class="user_num">
+                    <span>
+                        <% if type == "Have" %>
+                            <%= item.have_users.count %>
+                        <% elsif type == "Want" %>
+                            <%= item.want_users.count %>
+                        <% end %>
+                    </span>users!
+                </div>
+            </div>
+            <div class="image">
+                <div class="img-wrap">
+                    <%= link_to item do %>
+                        <% if item.large_image.present? %>
+                          <%= image_tag(item.large_image , alt: item.title) %>
+                        <% else %>
+                          <%= image_tag("no-image.png" , alt: item.title) %>
+                        <% end %>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-7">
+            <div class="item-title">
+                <%= link_to item do %>
+                    <%= item.title %>
+                <% end %>
+            </div>
+            <div class="users">
+                <% item.have_users.each do |u| %>
+                    <span class="gravatar">
+                        <%= link_to u do %>
+                            <%= gravatar_for(u, {size: 20}) %>
+                        <% end %>
+                    </span>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

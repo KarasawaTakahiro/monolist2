@@ -1,0 +1,8 @@
+<div class="ranking">
+    <h1>Wantランキング</h1>
+    <div class="container">
+        <% @ranking.each do |item, rank| %>
+            <%= render 'item', item: item, rank: rank, type: "Want" %>
+        <% end %>
+    </div>
+</div>

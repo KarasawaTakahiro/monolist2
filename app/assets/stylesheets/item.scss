@@ -1,3 +1,9 @@
+html, body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
 .item-box {
   width: 270px;
   margin: 15px;
@@ -164,3 +170,84 @@
     }
   }
 }
+.ranking {
+  margin: 0 10%;
+  h1 {
+    padding-left: 8%;
+  }
+  .ranking-item {
+    border-bottom: 2px #ddd solid;
+    margin-top: 35px;
+    padding-bottom: 3px;
+    .info {
+      float: left;
+      display: block;
+      width: 30%;
+      min-width: 100px;
+      height: 100px;
+      .rank-wrapper {
+        display: block;
+        height: 70%;
+        text-align: center;
+        padding-top: 10px;
+        .rank {
+          display: block;
+          font-size: 3em;
+          text-align: left;
+          height: 100%;
+        }
+      }
+      .user_num {
+        text-align: center;
+        height: 30%;
+        span {
+          font-size: 1.3em;
+        }
+      }
+    }
+    .image {
+      width: 100px;
+      height: 100px;
+      display: table;
+      border: 1px solid #ddd;
+      background: #fff;
+      border-top-right-radius: 3px;
+      border-top-left-radius: 3px;
+      .image-wrap {
+        width: 100px;
+        height: 100px;
+        display: tabel-cell;
+        padding: 10px;
+        vertical-align: middle;
+        text-align: center;
+        a {
+          text-decoration: none;
+          :hover {
+            text-decoration: none;
+          }
+          img {
+            height: 80px;
+            width: 80px;
+          }
+        }
+      }
+    }
+    .item-title {
+      a {
+        color: inherit;
+        :hover {
+          color: inherit;
+        }
+      }
+    }
+    .users{
+      overflow: hidden;
+      max-height: 40px;
+      a {
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+
